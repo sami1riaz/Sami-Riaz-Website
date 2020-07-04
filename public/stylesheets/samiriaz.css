@@ -1,0 +1,57 @@
+html {
+	height: 100%;
+}
+
+.home-body{
+	background: url(http://bollywoodjunction.ca/wp-content/uploads/2018/02/Goat-Biryani.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: Lato;
+}
+
+.contact-body{
+	background: url(https://backgroundcheckall.com/wp-content/uploads/2017/12/contact-background-image-9.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: Lato;
+}
+
+.interests-body{
+	background: url(https://backgroundcheckall.com/wp-content/uploads/2017/12/contact-background-image-9.jpg);
+	background-size: cover;
+	background-position: center;
+	font-family: Lato;
+}
+
+.achievements-body{
+	background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIbEiFGyvXCbco3yxI-K3YPqM_UHV0GKD5UPcIwgepQl9PxCZj-g);
+	background-size: cover;
+	background-position: center;
+	font-family: Lato;
+}
+
+#content {
+	text-align: center;
+	padding-top: 25%;
+	text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+				 0px 8px 13px rgba(0,0,0,0.1),
+				 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+#mainTitle {
+	color: pink;
+	font-weight: 700;
+	font-size: 5em;
+}
+
+#sub-heading {
+	color: white;
+}
+
+
+hr {
+	width: 400px;
+	color: white;
+	border-top: 1px soild #f8f8f8;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
