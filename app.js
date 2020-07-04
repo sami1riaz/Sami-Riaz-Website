@@ -61,8 +61,23 @@ app.post("/blogs", function(req, res) {
             res.redirect("/blogs");
         }
     })
-    
 });
+
+//// Payments /////
+const stripe = require('stripe')('sk_test_VKu4NFlvN0nooPbuXKjj79ZI000hoZLns6');
+
+const paymentIntent = await stripe.paymentIntents.create({
+    amount: 1099,
+    currency: 'cad',
+    // Verify your integration in this guide by including this parameter
+    metadata: {integration_check: 'accept_a_payment'},
+  });
+
+  app.get('/secret', async (req, res) => {
+    const intent = // ... Fetch or create the PaymentIntent
+    res.json({client_secret: intent.client_secret});
+  });
+
 app.listen(3000, () => {
     console.log("Listening on port 3000");
     });
