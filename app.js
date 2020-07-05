@@ -6,7 +6,7 @@ const app = express();
 app.set("view engine", "ejs");
 
 
-app.use(express.static('public'));
+app.use(express.static('/public/'));
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
@@ -64,14 +64,38 @@ app.post("/blogs", function(req, res) {
 });
 
 //// Payments /////
+
+app.get('/payments', async (req, res) => {
+    //const intent = // ... Fetch or create the PaymentIntent
+    res.render('payments');//, { client_secret: intent.client_secret });
+  });
+  
+
+// Set your secret key. Remember to switch to your live secret key in production!
+// See your keys here: https://dashboard.stripe.com/account/apikeys
 const stripe = require('stripe')('sk_test_VKu4NFlvN0nooPbuXKjj79ZI000hoZLns6');
 
-const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1099,
-    currency: 'cad',
-    // Verify your integration in this guide by including this parameter
-    metadata: {integration_check: 'accept_a_payment'},
-  });
+
+var stripepk = Stripe('pk_test_6dORex2lupf2JYahqNKqU7pL00LPz6FOGC');
+var elements = stripepk.elements();
+var style = {
+    base: {
+      color: "#32325d",
+    }
+  };
+  
+  var card = elements.create("card", { style: style });
+  card.mount("#card-element");
+
+app.post("/create-payment-intent", async (req, res) => {
+    const { items, currency } = req.body;
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: 1099,
+        currency: 'cad',
+        // Verify your integration in this guide by including this parameter
+        metadata: {integration_check: 'accept_a_payment'},
+    });
+});
 
   app.get('/secret', async (req, res) => {
     const intent = // ... Fetch or create the PaymentIntent
